@@ -79,12 +79,144 @@ public class RecurssionPlayListTUF {
 //     subSequence(arr, idx+1, li);
 // }
 
-//
+//Subsequence Sum equals K
+    // static void sumEqualsK(int[] arr, int idx, int sum, int reqSum, List<Integer> li){
+    //     if(idx == arr.length){
+    //         if(sum == reqSum){
+    //             System.out.println(li);
+    //         }
+    //         return ;
+    //     }
+    //     li.add(arr[idx]);
+    //     sum+=arr[idx];
+    //     sumEqualsK(arr, idx+1, sum, reqSum, li);
+    //     sum-=li.get(li.size()-1);
+    //     li.remove(li.size()-1);
+    //     sumEqualsK(arr, idx+1, sum, reqSum, li);
+    // }
+// //Print one SubSeq with sum K
+//     static boolean oneSubsequenceSumEqualsK(int[] arr, int idx, int sum, int reqSum, ArrayList<Integer> li){
+//         if(idx == arr.length){
+//             if(sum ==reqSum){
+//                 System.out.println(li);
+//                 return true;
+//             }
+//             return false;
+            
+//         }
+//         li.add(arr[idx]);
+//         if(oneSubsequenceSumEqualsK(arr, idx+1, sum+arr[idx], reqSum, li)){
+//             return true;
+//         }
+//         li.remove(li.size()-1);
+//         if(oneSubsequenceSumEqualsK(arr, idx+1, sum, reqSum, li)){
+//             return true;
+//         }
+//         return false;
+//     }
+//     //Count SubSeq sum Equals K
+//     static int countSubsequenceSumEqualsK(int[] arr, int idx, int sum, int reqSum){
+//         if(idx == arr.length){
+//             if(sum == reqSum) return 1;
+//             return 0;
+//         }
+//         int l = countSubsequenceSumEqualsK(arr, idx+1, sum+arr[idx], reqSum);
+//         int r = countSubsequenceSumEqualsK(arr, idx+1, sum, reqSum);
+//         return l+r;
+//     }
 
+
+//Merge Sort
+    // static void mergeSort(int [] arr, int srt, int end){
+    //     if(srt == end){
+    //         return;
+    //     }
+    //     int mid = (srt+end)/2;
+    //     mergeSort(arr, srt, mid);
+    //     mergeSort(arr, mid+1, end);
+    //     merger(arr, srt, mid, end);
+
+    // }
+    // static void merger(int [] arr, int srt, int mid, int end){
+    //     ArrayList<Integer> temp = new ArrayList<>();
+    //     int l = srt;
+    //     int r = mid+1;
+    //     while(l <= mid && r <=end){
+    //         if(arr[l] <= arr[r]){
+    //             temp.add(arr[l]);
+    //             l++;
+    //         }else{
+    //             temp.add(arr[r]);
+    //             r++;
+    //         }
+    //     }
+    //     while (l <= mid) {
+    //         temp.add(arr[l]);
+    //         l++;
+    //     }
+    //     while(r <=end){
+    //         temp.add(arr[r]);
+    //         r++;
+    //     }
+    //     for(int i = srt; i <= end;i++){
+    //         arr[i] = temp.get(i-srt);
+    //     }
+    // }
+
+//Quick Sort
+    // static void quickSort(int[] arr,int l,int h){
+    //     if(l < h){
+    //         int pvt = piviotFinder(arr, l,h);
+    //         quickSort(arr, l, pvt-1);
+    //         quickSort(arr, pvt+1, h);
+
+    //     }
+    // }
+    // static int piviotFinder(int[] arr, int low, int high){
+    //     int h = high;
+    //     int l = low;
+    //     int pvt = arr[l];
+    //     while(l < h){
+    //         while(arr[l] <= pvt && l <= high){
+    //             l++;
+    //         }
+    //         while(arr[h] > pvt && h >= low){
+    //             h--;
+    //         }
+    //         if(l < h){
+    //             swap(arr,l,h);
+    //         }
+    //     }
+    //     swap(arr, low, h);
+    //     return h;
+    // }
+    // static void swap(int [] arr, int h, int l){
+    //     int temp = arr[h];
+    //     arr[h] = arr[l];
+    //     arr[l] = temp;
+    // }
+
+
+    //Combination Sum
+    static void combinationSum(int[] arr, int idx, int tgt, ArrayList<Integer> li){
+        if(idx == arr.length){
+            if(tgt==0){
+                System.out.println(li);
+            }
+            return ;
+        }
+        if(arr[idx] <= tgt){
+            li.add(arr[idx]);
+            combinationSum(arr, idx, tgt-arr[idx], li);
+            li.remove(li.size()-1);
+        }
+        combinationSum(arr, idx+1, tgt, li);
+
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int [] arr = {1,2,3,4};
-        subSequence(arr, 0, new ArrayList<Integer>());
+        int [] arr = {1,3,2,1,4,};
+       combinationSum(arr, 0, 4, new ArrayList<Integer>());
         
     }
 }
