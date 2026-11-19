@@ -198,25 +198,44 @@ public class RecurssionPlayListTUF {
 
 
     //Combination Sum
-    static void combinationSum(int[] arr, int idx, int tgt, ArrayList<Integer> li){
-        if(idx == arr.length){
-            if(tgt==0){
-                System.out.println(li);
-            }
-            return ;
-        }
-        if(arr[idx] <= tgt){
-            li.add(arr[idx]);
-            combinationSum(arr, idx, tgt-arr[idx], li);
-            li.remove(li.size()-1);
-        }
-        combinationSum(arr, idx+1, tgt, li);
+    // static void combinationSum(int[] arr, int idx, int tgt, ArrayList<Integer> li){
+    //     if(idx == arr.length){
+    //         if(tgt==0){
+    //             System.out.println(li);
+    //         }
+    //         return ;
+    //     }
+    //     if(arr[idx] <= tgt){
+    //         li.add(arr[idx]);
+    //         combinationSum(arr, idx, tgt-arr[idx], li);
+    //         li.remove(li.size()-1);
+    //     }
+    //     combinationSum(arr, idx+1, tgt, li);
 
-    }
+    // }
+
+//Combination Sum 2
+//works for only sorted array
+    // static void combinationSum(int[] arr, int idx, int tgt, List<Integer> li){
+       
+    //         if(tgt == 0){
+    //             System.out.println(li);
+    //             return;
+    //         }
+    //     for(int i = idx; i < arr.length; i++){
+    //         if(i > idx && arr[i] == arr[i-1]) continue;
+    //         if(arr[i] > tgt) break;
+    //         li.add(arr[i]);
+    //         combinationSum(arr, i+1, tgt-arr[i], li);
+    //         li.remove(li.size()-1);
+    //     }
+    // } 
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int [] arr = {1,3,2,1,4,};
-       combinationSum(arr, 0, 4, new ArrayList<Integer>());
+        int [] arr = {1,1,2,2,3,4,};
+    //    combinationSum(arr, 0, 4, new ArrayList<Integer>());
         
     }
 }
